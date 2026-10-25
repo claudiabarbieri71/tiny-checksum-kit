@@ -24,3 +24,10 @@ The trade-off is flexibility: only CRC-32 and Adler-32 are supported, and only a
 ## Edge cases
 
 An empty stream is valid and yields the algorithms' canonical zero-input digests: CRC-32 returns `00000000`, Adler-32 returns `00000001`. The `chunk_size` parameter must be a positive integer; passing zero or a negative value raises `ValueError` before any I/O is attempted.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
