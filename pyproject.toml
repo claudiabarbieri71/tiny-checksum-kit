@@ -1,6 +1,6 @@
 [project]
 name = "tiny-checksum-kit"
-version = "0.1.1"
+version = "0.1.2"
 description = "CRC-32 and Adler-32 checksum digests for binary streams, returned as lowercase hex strings."
 requires-python = ">=3.10"
 dependencies = []
